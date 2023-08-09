@@ -1,4 +1,4 @@
-# ReadyCheck
+# jReadyCheck
 ## Warcraft ReadyCheck mod, since 2019
 
 ## License
@@ -17,6 +17,6 @@ UI works with Classic Era, Classic Wrath and Retail
 ## FAQ
 
 ## Issues
-https://github.com/jadissa/jVars/issues
+https://github.com/jadissa/jReadyCheck/issues
 
 ## Screenshots
