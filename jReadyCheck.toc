@@ -1,5 +1,5 @@
 ## Title: |cff009bffj|cffffffffReadyCheck|r
-## Notes: j's ReadyCheck Mod
+## Notes: j's Ready Check Mod
 ## X-Category: system
 
 ## Author: jadissa

@@ -6,6 +6,9 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
     if( AddonName == 'jReadyCheck' ) then
 
         Addon.APP.Theme = {
+            Text = {
+                Hex = 'ffffff',
+            },
             Notify = {
                 Hex = '009bff',
             },
@@ -49,7 +52,11 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
                     if( Event == 'READY_CHECK' ) then
                         local MessageText = 'You responded ready to leader';
                         if( Index == 1 ) then
-                            UIErrorsFrame:AddMessage( MessageText );
+                            UIErrorsFrame:AddMessage( MessageText,
+                                Addon.APP.Theme.Text.r,
+                                Addon.APP.Theme.Text.g,
+                                Addon.APP.Theme.Text.b 
+                            );
                             Addon.APP:Notify( MessageText );
                         end
                         ReadyCheckFrameYesButton:Click();
