@@ -29,7 +29,6 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
         --
         --  @return void
         Addon.APP.Init = function( self )
-
             self.Name = AddonName;
 
             for Key,Data in pairs( self.Theme ) do
@@ -44,12 +43,11 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
         --
         --  @return void
         Addon.APP.Run = function( self )
-            SOUNDKIT.READY_CHECK_OLD = SOUNDKIT.READY_CHECK;
-            SOUNDKIT.READY_CHECK = SOUNDKIT.RAID_WARNING;
             for Index = 1, 4 do
                 local Frame = _G[ 'PartyMemberFrame'..Index ];
                 Frame:SetScript( 'OnEvent',function( self,Event,... )
                     if( Event == 'READY_CHECK' ) then
+                        MuteSoundFile( SOUNDKIT.READY_CHECK );
                         local MessageText = 'You responded ready to leader';
                         if( Index == 1 ) then
                             UIErrorsFrame:AddMessage( MessageText,
@@ -60,9 +58,8 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
                             Addon.APP:Notify( MessageText );
                         end
                         ReadyCheckFrameYesButton:Click();
-                        C_Timer.After( 2,function()
-                            ConfirmReadyCheck( true );
-                        end)
+                        PlaySound( SOUNDKIT.RAID_WARNING );
+                        --ConfirmReadyCheck( true );
                     end
                 end );
             end
