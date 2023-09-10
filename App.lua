@@ -5,20 +5,11 @@ Addon.APP:RegisterEvent( 'ADDON_LOADED' );
 Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
     if( AddonName == 'jReadyCheck' ) then
 
-        Addon.APP.Theme = {
-            Text = {
-                Hex = 'ffffff',
-            },
-            Notify = {
-                Hex = '009bff',
-            },
-        };
-
         Addon.APP.Notify = function( self,... )
             local prefix = CreateColor(
-                self.Theme.Notify.r,
-                self.Theme.Notify.g,
-                self.Theme.Notify.b
+                Addon.Theme.Notify.r,
+                Addon.Theme.Notify.g,
+                Addon.Theme.Notify.b
             ):WrapTextInColorCode( AddonName );
 
             _G[ 'DEFAULT_CHAT_FRAME' ]:AddMessage( string.join( ' ', prefix, ... ) );
@@ -30,12 +21,6 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
         --  @return void
         Addon.APP.Init = function( self )
             self.Name = AddonName;
-
-            for Key,Data in pairs( self.Theme ) do
-                if( Key ~= 'Font' ) then
-                    self.Theme[ Key ].r,self.Theme[ Key ].g,self.Theme[ Key ].b = Addon:Hex2RGB( Data.Hex );
-                end
-            end
         end
 
         --
@@ -51,9 +36,9 @@ Addon.APP:SetScript( 'OnEvent',function( self,Event,AddonName )
                         local MessageText = 'You responded ready to leader';
                         if( Index == 1 ) then
                             UIErrorsFrame:AddMessage( MessageText,
-                                Addon.APP.Theme.Text.r,
-                                Addon.APP.Theme.Text.g,
-                                Addon.APP.Theme.Text.b 
+                                Addon.Theme.Text.r,
+                                Addon.Theme.Text.g,
+                                Addon.Theme.Text.b 
                             );
                             Addon.APP:Notify( MessageText );
                         end
